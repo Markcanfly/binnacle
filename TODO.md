@@ -1,0 +1,7 @@
+- [ ] Essential:
+    - [ ] Testing
+    - [ ] Display filename in diff
+    - [ ] Option to ignore random values
+    - [ ] Diff mode
+- [ ] Improvements:
+    - [ ] Git mode - with *colors*
