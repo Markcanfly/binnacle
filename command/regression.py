@@ -9,7 +9,7 @@ def regression(helm: Helm, old: HelmChart, new: HelmChart, values: List[Values],
     differences = []
     for value in values:
         old_objects: List[K8SObject] = helm.template(old, [value])
-        new_objects: List[K8SObject] = helm.template(old, [value])
+        new_objects: List[K8SObject] = helm.template(new, [value])
         differences.append(DeepDiff(old_objects, new_objects))
     
     print_differences(differences, diff_format=format)
