@@ -1,0 +1,4 @@
+apiVersion: v2
+name: OldTestChart
+version: 1.0.0
+description: The before-state of the chart for Binnacle testing

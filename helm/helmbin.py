@@ -36,5 +36,6 @@ class Helm:
     
     def template(self, chart: HelmChart, values: List[Values] = None) -> List[K8SObject]:
         if values is None: values = []
-        stdout = self.operation('template', chart.path, '--values', *values) # Remove --values from here and create it in the Values class
+        stdout = self.operation('template', chart.path, *values) 
+        # Remove --values from here and create it in the Values class
         return [o for o in yaml.safe_load_all(stdout)]

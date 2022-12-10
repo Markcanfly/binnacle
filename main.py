@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 from helm.chart import HelmChart
 from helm.helmbin import Helm
 from command.regression import regression
+from command.helpers import print_differences
 
 def cmd_regression(args):
     old = HelmChart(args.old_chart)
@@ -9,7 +10,8 @@ def cmd_regression(args):
     values = args.values
     diff_format = args.diff_format
     helm = Helm()
-    regression(helm, old, new, values, diff_format)
+    differences = regression(helm, old, new, values, diff_format)
+    print_differences(differences, diff_format)
 
 def cmd_diff(args):
     pass
