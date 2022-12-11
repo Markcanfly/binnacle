@@ -1,7 +1,8 @@
 - [ ] Essential:
-    - [ ] Testing
+    - [x] Testing
     - [ ] Display filename in diff
     - [ ] Option to ignore random values
     - [ ] Diff mode
 - [ ] Improvements:
     - [ ] Git mode - with *colors*
+    - [ ] Figure out how to test on account of import fail
