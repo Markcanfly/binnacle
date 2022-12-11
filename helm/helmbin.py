@@ -8,6 +8,9 @@ import yaml
 
 ExitCode = int
 
+def flatten(l):
+    return [item for sublist in l for item in sublist]
+
 class HelmError(BaseException): pass
 
 class Helm:
@@ -36,6 +39,6 @@ class Helm:
     
     def template(self, chart: HelmChart, values: List[Values] = None) -> List[K8SObject]:
         if values is None: values = []
-        stdout = self.operation('template', chart.path, *[v.argument for v in values]) 
+        stdout = self.operation('template', chart.path, *flatten([v.argument for v in values])) 
         # Remove --values from here and create it in the Values class
         return [o for o in yaml.safe_load_all(stdout)]
