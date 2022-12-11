@@ -1,0 +1,10 @@
+FROM ubuntu:focal
+
+RUN apt-get -qq update
+RUN apt-get install python3 curl git -y > /dev/null
+RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+# Recommended to mount app directory under /app
+WORKDIR app
+
+# TODO install requirements
