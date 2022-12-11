@@ -8,9 +8,11 @@ from command.helpers import DiffFormat, print_differences
 def regression(helm: Helm, old: HelmChart, new: HelmChart, values: List[Values], format: DiffFormat=DiffFormat.YAML) -> List[Delta]:
     differences = []
     differences.append(DeepDiff(helm.template(old), helm.template(new)))
-    for value in values:
+    differences[0].values = Values(new.path)
+    for idx, value in enumerate(values):
         old_objects: List[K8SObject] = helm.template(old, [value])
         new_objects: List[K8SObject] = helm.template(new, [value])
         differences.append(DeepDiff(old_objects, new_objects))
+        differences[idx + 1].values = value
     
     return differences
